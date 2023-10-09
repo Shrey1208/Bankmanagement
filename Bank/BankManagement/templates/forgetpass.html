@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <form method="POST" action="/forgetpas">
+            {% csrf_token %}
+
+
+            <div class="row">
+                <div class="col">
+                    <center>
+                        <h3>Conform Email</h3>
+                    </center>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="email">Enter your Email:</label>
+                    <input type="email" class="form-control" placeholder="Enter email" name="Checkemail">
+
+                    <div class="form-group">
+                    <input type="button" class="btn btn-bg btn-default btn-block" data-toggle="modal" data-target="#changepwd" value="Change Password"> 
+                   </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{{ Email }}
+{% comment %} {% if Email %} {% endcomment %}
+    <div class="modal fade forgot-modal" id="changepwd">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">            
+                <div class="modal-body">
+                    <h3 class="title">Change Password</h3>
+                    <form id="change-password-form">                   
+                        {% csrf_token %}
+                        <div class="form-group">                        
+                            <input type="password" name="new_password" class="form-control border-btm" required  placeholder="Enter your new password">
+                        </div>
+                        <div class="form-group">                        
+                            <input type="password" name="cnew_password" class="form-control border-btm" required  placeholder="Confirm your new password">
+                        </div>
+                    
+                        <button type="submit" class="btn btn-block btn-info  btn-bg" data-toggle="modal" id="resetBtn">Done</button>
+                        <button type="reset" class="btn btn-block btn-danger btn-border" data-dismiss="modal">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% comment %} {% endif %} {% endcomment %}
+</body>
+
+</html>
